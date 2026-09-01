@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import { listCourses } from '@/lib/course-service';
 
-export default function CoursesPage() {
-  const items = listCourses();
+export default async function CoursesPage() {
+  const items = await listCourses();
 
   return (
     <main className="mx-auto max-w-7xl px-6 py-12">

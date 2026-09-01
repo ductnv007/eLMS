@@ -2,8 +2,8 @@ import Link from 'next/link';
 import { ThemeToggle } from './theme-toggle';
 import { getCurrentUser } from '@/lib/auth-service';
 
-export function SiteHeader() {
-  const user = getCurrentUser();
+export async function SiteHeader() {
+  const user = await getCurrentUser();
 
   return (
     <header className="border-b border-slate-200 bg-white/80 backdrop-blur">

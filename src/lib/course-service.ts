@@ -1,19 +1,24 @@
-import { courses } from './mock-data';
+import { courses, Course } from './mock-data';
 import { getDataSource } from './data-source';
+import { getSupabaseCourses } from './supabase-data-service';
 
 export type CourseQuery = {
   search?: string;
   category?: string;
 };
 
-export function listCourses(query: CourseQuery = {}) {
+export type { Course };
+
+export async function listCourses(query: CourseQuery = {}) {
   const source = getDataSource();
 
+  let coursesList = courses;
+
   if (source === 'supabase') {
-    return courses;
+    coursesList = await getSupabaseCourses();
   }
 
-  let filtered = [...courses];
+  let filtered = [...coursesList];
 
   if (query.search) {
     const search = query.search.toLowerCase();
@@ -30,6 +35,14 @@ export function listCourses(query: CourseQuery = {}) {
   return filtered;
 }
 
-export function getCourseBySlug(slug: string) {
+
+export async function getCourseBySlug(slug: string) {
+  const source = getDataSource();
+
+  if (source === 'supabase') {
+    const { getSupabaseCourseBySlug } = await import('./supabase-data-service');
+    return getSupabaseCourseBySlug(slug);
+  }
+
   return courses.find((course) => course.slug === slug) ?? null;
 }

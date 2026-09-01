@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.6.0] - 2026-09-02
+
+### Added
+- Supabase integration with PostgreSQL schema (users, courses, lessons, quizzes, enrollments).
+- Supabase client and data service layer for real backend connectivity.
+- Updated auth service to support Supabase authentication.
+- RLS policies for secure data access.
+- Database migrations and schema documentation.
+
+## [0.5.0] - 2026-09-02
+
+### Added
+- Admin course management page with course table and status display.
+- Admin appearance settings page for brand customization.
+- Admin service layer with mock course data and analytics.
+
 ## [0.4.0] - 2026-09-02
 
 ### Added
