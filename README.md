@@ -1,36 +1,136 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ELMS - E-Learning Management System
 
-## Getting Started
+A modern, full-stack e-learning platform built with Next.js, TypeScript, and Tailwind CSS.
 
-First, run the development server:
+## 🚀 Features
+
+- **Course Catalog** - Browse and search available courses
+- **Learner Dashboard** - Track enrollment and learning progress
+- **Lesson Player** - Interactive lesson viewing with progress tracking
+- **Admin Management** - Course and appearance settings
+- **Authentication** - Supabase auth integration (with mock fallback)
+- **Dark Mode** - Theme toggle support
+- **Responsive Design** - Mobile-first Tailwind CSS styling
+
+## 🏗️ Architecture
+
+- **Mock-first architecture** - Works without backend configuration
+- **Data source abstraction** - Easy swap between mock, Supabase, and APIs
+- **Service layer** - Clean separation of concerns
+- **Type-safe** - Full TypeScript support
+
+## 📋 Quick Start
+
+### Local Development
 
 ```bash
+# Install dependencies
+npm install
+
+# Run development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+# Open http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Production Build
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run build
+npm run start
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🧪 Testing & Quality
 
-## Learn More
+```bash
+# Run tests
+npm run test:run
 
-To learn more about Next.js, take a look at the following resources:
+# Type checking
+npm run typecheck
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# Linting
+npm run lint
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🔧 Configuration
 
-## Deploy on Vercel
+### Environment Variables
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Copy `.env.example` to `.env.local` and configure:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```env
+# Data source: mock, supabase, or remote-api
+DATA_SOURCE=mock
+
+# Supabase (optional - app works without these)
+NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
+SUPABASE_SERVICE_ROLE_KEY=your-service-role-key
+
+# App URL (auto-set in production)
+NEXT_PUBLIC_APP_URL=http://localhost:3000
+```
+
+## 📦 Deployment
+
+### Deploy to Vercel
+
+The easiest way to deploy:
+
+```bash
+npm i -g vercel
+vercel
+```
+
+Or connect your GitHub repository directly to Vercel:
+1. Go to [vercel.com](https://vercel.com)
+2. Click "Import Project"
+3. Select your GitHub repository
+4. Configure environment variables
+5. Click "Deploy"
+
+### Environment Variables in Production
+
+Add these in Vercel Dashboard → Settings → Environment Variables:
+- `NEXT_PUBLIC_SUPABASE_URL`
+- `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+- `SUPABASE_SERVICE_ROLE_KEY`
+- `DATA_SOURCE` (set to "supabase" for real backend)
+
+## 📚 Project Structure
+
+```
+eLMS/
+├── src/
+│   ├── app/              # Next.js app routes
+│   ├── components/       # Reusable React components
+│   ├── lib/
+│   │   ├── mock-data.ts        # Mock data for demo
+│   │   ├── data-source.ts      # Source abstraction
+│   │   ├── course-service.ts   # Course business logic
+│   │   ├── auth-service.ts     # Auth & user logic
+│   │   ├── enrollment-service.ts  # Enrollment logic
+│   │   ├── lesson-service.ts   # Lesson logic
+│   │   └── supabase-*          # Supabase integration
+│   └── test/            # Test setup
+├── public/              # Static assets
+├── supabase/            # Database migrations
+├── vercel.json         # Vercel deployment config
+└── package.json
+```
+
+## 🎯 Phase Status
+
+- **v0.1** - Core mock app foundation
+- **v0.2** - Data source abstraction
+- **v0.3** - Auth-aware shell & theme
+- **v0.4** - Quality gates & CI/CD
+- **v0.5** - Admin flows (courses, appearance)
+- **v0.6** - Supabase integration
+- **v0.7** - Learner enrollment & lesson player
+- **v0.8** - Quiz system & production deployment
+
+## 📝 License
+
+MIT
