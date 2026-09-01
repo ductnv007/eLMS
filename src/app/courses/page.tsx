@@ -1,7 +1,9 @@
 import Link from 'next/link';
-import { courses } from '@/lib/mock-data';
+import { listCourses } from '@/lib/course-service';
 
 export default function CoursesPage() {
+  const items = listCourses();
+
   return (
     <main className="mx-auto max-w-7xl px-6 py-12">
       <div className="flex items-end justify-between gap-4">
@@ -10,12 +12,12 @@ export default function CoursesPage() {
           <h1 className="mt-2 text-4xl font-black text-slate-900">All courses</h1>
         </div>
         <div className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm text-slate-600">
-          3 results
+          {items.length} results
         </div>
       </div>
 
       <div className="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-        {courses.map((course) => (
+        {items.map((course) => (
           <article key={course.id} className="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm">
             <img src={course.cover} alt={course.title} className="h-44 w-full object-cover" />
             <div className="p-5">

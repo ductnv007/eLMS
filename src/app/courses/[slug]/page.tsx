@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { courses } from '@/lib/mock-data';
+import { getCourseBySlug } from '@/lib/course-service';
 
 export default async function CourseDetailPage({
   params,
@@ -8,7 +8,7 @@ export default async function CourseDetailPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const course = courses.find((item) => item.slug === slug);
+  const course = getCourseBySlug(slug);
 
   if (!course) {
     notFound();
