@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.7.0] - 2026-09-02
+
+### Added
+- Enrollment service for course enrollment and progress tracking.
+- Lesson service layer for fetching course lessons.
+- Lesson player page with mock video player and content display.
+- Updated dashboard to display enrolled courses with progress.
+- Dashboard now shows learner name and enrollment tracking.
+- Links to continue learning from dashboard to lesson player.
+
 ## [0.6.0] - 2026-09-02
 
 ### Added
